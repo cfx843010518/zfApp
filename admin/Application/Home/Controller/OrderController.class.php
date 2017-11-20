@@ -28,7 +28,9 @@ class OrderController extends Controller{
 		}
 		// var_dump($orderModel);
 		$orders = $orderModel->join('zf_user ON zf_order.user_id = zf_user.user_id')->where($condition)->select();		//找出所有数据
+		//var_dump($orders);
 		$total = count($orders);					//算出总数据的记录条数
+		//var_dump($total);
 		// echo $total;
 		$size = 9;							//规定每页只显示的记录的条数
 		$page_num=ceil($total/$size);			//算出总页数

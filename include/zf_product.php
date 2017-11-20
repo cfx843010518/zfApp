@@ -9,7 +9,7 @@
 	
 	//用于检查是否有这个商品
 	function checkProById($product_id){
-		$sql = "select * from zf_product where product_id=$product_id";
+		$sql = "select * from zf_product,zf_discount where zf_product.product_id=$product_id and zf_product.product_id = zf_discount.product_id";
 		$rs = execQuery($sql);
 		return $rs;
 	}

@@ -69,19 +69,32 @@
 			$record = "ip地址为:".$ip."正在访问，访问时间是：".date("Y-m-d H:i:s");
 			fwrite($file,$record."   上传用户id是：".$user_id."  商品数量：".$val->pro_num." 商品id：".$val->product_id." 发货信息: ".$delivery_mes."\r");  
 			fclose($file);
-			
 			$rs = checkProById($val->product_id);		//检查是否有该商品
+			//var_dump($rs);
 			if(count($rs)!=0){
-				if(isset($rs[0]['discount_price'])){		//处理单价
-					$pro_price = $rs[0]['discount_price'];
-				}else{
-					$pro_price = $rs[0]['pro_price'];
+				$pro_prices = $rs[0]['pro_price'];
+				$salesPromotion = $rs[0]['salesPromotion'];
+				if($salesPromotion!=null){
+					$pro_prices = $pro_prices/100*$salesPromotion*10;
 				}
-				$sql = "insert into zf_order_item(product_id,pro_prices,order_id,pro_num) value($val->product_id,$pro_price,$auto_id,$val->pro_num)";		//往订单表插入一条数据
+				$groupBuying = $rs[0]['groupBuying'];
+				// var_dump($groupBuying);
+				if($groupBuying!=null){
+					$arr = explode('/',$groupBuying);
+					if($pro_num>$arr[0]){
+					//有团购价
+						$pro_prices = $pro_prices/100*$arr[1]*10;
+					}
+				}
+				$HolidayPreferences = $rs[0]['HolidayPreferences'];
+				if($HolidayPreferences!=null){
+					$pro_prices = $pro_prices/100*$HolidayPreferences*10;
+				}
+				$sql = "insert into zf_order_item(product_id,pro_prices,order_id,pro_num) value($val->product_id,$pro_prices,$auto_id,$val->pro_num)";		//往订单表插入一条数据
 				$re2 = mysql_query($sql,$con);
 			}	
 		}
-		$sql = "insert into zf_delivery(delivery_status_id,order_id,delivery_way_id,delivery_mes) value(1,$auto_id,$delivery_way_id,'$delivery_mes')";	//往发货表添加一条记录
+		$sql = "insert into zf_delivery(order_id,delivery_way_id,delivery_mes) value($auto_id,$delivery_way_id,'$delivery_mes')";	//往发货表添加一条记录
 		$re3 = mysql_query($sql,$con);
 		if($re1&&$re2&&$re3){
 			//echo '来到这里没有';

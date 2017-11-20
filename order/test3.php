@@ -6,16 +6,19 @@
 
 </head>
 <body>
-	
+	<!--
 	<form action="pay.php" method="post">
 		订单id: <input type="text" name="order_id"/>
 		<input type="submit" value="登录"/>
 	</form>
-	<!--
+	-->
 	<form action="manyCommitOrder.php" method="post">
 		订单信息: <input type="text" name="orderMes"/>
 		<input type="submit" value="登录"/>
 	</form>
-	-->
+	<?php
+		$ret = array('user_id'=>1,'res'=>array(array('product_id'=>4,'pro_num'=>5),array('product_id'=>5,'pro_num'=>6)),'delivery_mes_id'=>3);
+		echo json_encode($ret);
+	?>
 </body>
 </html>
