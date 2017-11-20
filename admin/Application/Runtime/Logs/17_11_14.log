@@ -1,0 +1,30 @@
+[ 2017-11-14T08:21:17+08:00 ] 127.0.0.1 /zfApp/admin/index.php/Home/Login/checkUser
+ERR: Access denied for user 'root'@'localhost' (using password: YES)
+
+[ 2017-11-14T08:21:39+08:00 ] 127.0.0.1 /zfApp/admin/index.php/Home/Login/checkUser
+ERR: Access denied for user 'root'@'localhost' (using password: NO)
+
+[ 2017-11-14T10:33:01+08:00 ] 127.0.0.1 /zfApp/admin/index.php/Order/findOrder.htm
+ERR: 非法操作:findorder.htm
+
+[ 2017-11-14T10:34:25+08:00 ] 127.0.0.1 /zfApp/admin/index.php/Order/css/themes/default/easyui.css
+ERR: 非法操作:css
+
+[ 2017-11-14T10:34:25+08:00 ] 127.0.0.1 /zfApp/admin/index.php/Order/js/easyui-lang-zh_CN.js
+ERR: 非法操作:js
+
+[ 2017-11-14T10:34:25+08:00 ] 127.0.0.1 /zfApp/admin/index.php/Order/css/themes/icon.css
+ERR: 非法操作:css
+
+[ 2017-11-14T10:34:25+08:00 ] 127.0.0.1 /zfApp/admin/index.php/Order/js/jquery.easyui.min.js
+ERR: 非法操作:js
+
+[ 2017-11-14T10:34:25+08:00 ] 127.0.0.1 /zfApp/admin/index.php/Order/css/demo.css
+ERR: 非法操作:css
+
+[ 2017-11-14T10:34:25+08:00 ] 127.0.0.1 /zfApp/admin/index.php/Order/js/jquery.min.js
+ERR: 非法操作:js
+
+[ 2017-11-14T10:41:09+08:00 ] 127.0.0.1 /zfApp/admin/index.php/Order/page_id=3
+ERR: 非法操作:page_id=3
+
