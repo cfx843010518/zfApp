@@ -2,7 +2,8 @@
 	require_once('../include/zf_shoppingCar.php');
 	require_once('../include/zf_product.php');
 	require_once('../unit/opUrl.php');
-	$url = getUrl();		//获取项目url
+	$PHP_SELF=$_SERVER['PHP_SELF'] ? $_SERVER['PHP_SELF'] : $_SERVER['SCRIPT_NAME'];
+	$url='http://'.$_SERVER['HTTP_HOST'].substr($PHP_SELF,0,strpos($PHP_SELF, 'zfApp')+strlen('zfApp'));		//获取项目的url
 	$ret = array('res'=>'','status'=>'lose','errorMes'=>'程序错误');
 	if(isset($_GET['user_id'])){
 		$user_id = $_GET['user_id'];
@@ -15,7 +16,7 @@
 				$product_id = $val['product_id'];
 				$result = getProById($product_id);
 				$photos = explode('/',$result[0]['product_image']);	//肢解图片路径
-				$rea[$key] = array('product_id'=>$result[0]['product_id'],'pro_name'=>$result[0]['supply_product_name'],'pro_image'=>$url.'image/'.$photos[0],'pro_price'=>$result[0]['pro_price'],'pro_num'=>$val['pro_num']);
+				$rea[$key] = array('product_id'=>$result[0]['product_id'],'pro_name'=>$result[0]['supply_product_name'],'pro_image'=>$url.'/admin/Public/images/product/'.$photos[0],'pro_price'=>$result[0]['pro_price'],'pro_num'=>$val['pro_num']);
 			}
 			$return = array('mes'=>$rea,'mes_num'=>count($rs));		//这个变量需要修改
 			$ret = array('res'=>$return,'status'=>'success','errorMes'=>'');
