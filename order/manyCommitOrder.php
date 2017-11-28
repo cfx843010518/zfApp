@@ -17,7 +17,7 @@
 		$delivery_mes = $result[0]['delivery_address'].'/'.$result[0]['receM_name'].'/'.$result[0]['receM_phone'];
 		$return = placeOrder2($user_id,$delivery_way_id,$delivery_mes,$products);	//处理提交的订单数据
 		if($return!= -1){
-			$ret = array('res'=>'','status'=>'success','errorMes'=>'');
+			$ret = array('res'=>array('order_id'=>$ret),'status'=>'success','errorMes'=>'');
 		}
 	}
 	echo json_encode($ret);

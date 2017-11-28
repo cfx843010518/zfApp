@@ -4,10 +4,14 @@
 	require_once('../include/zf_product.php');
 	date_default_timezone_set('PRC');
 	$ret = array('res'=>null,'status'=>'lose','errorMes'=>'程序错误');
-	if(isset($_GET['user_id'])){
+	if(isset($_GET['user_id']) && isset($_GET['order_status_id'])){
 		$user_id = $_GET['user_id'];	//获取用户ID
-		$condition['user_id'] = $user_id;
-		$sql = "select * from zf_order where user_id = $user_id";
+		$order_status_id = $_GET['order_status_id'];
+		if($order_status_id==0){
+			$sql = "select * from zf_order where user_id = $user_id";
+		}else{
+			$sql = "select * from zf_order where user_id = $user_id and order_status_id = $order_status_id";
+		}
 		$rs = execQuery($sql);
 		if(count($rs)!=0){
 			//再去查询该订单下的所有商品
