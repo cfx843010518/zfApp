@@ -28,7 +28,7 @@
 		if(count($rs)!=0){
 			$ret = placeOrder($rs,$product_id,$user_id,$pro_num,$delivery_way_id,$delivery_mes);	//处理提交的订单数据
 			if($ret!=-1){
-				$ret = array('res'=>'','status'=>'success','errorMes'=>'');
+				$ret = array('res'=>'成功','status'=>'success','errorMes'=>'');
 			}
 		}			
 	}
